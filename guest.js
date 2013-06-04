@@ -2,7 +2,7 @@
 	var GUESTS = {
 		"zoidberg" : {
 			url : "http://screenletstore.appspot.com/img/94ba50b3-cc9b-11e2-a6d9-016a8cd7abaa.png",
-			name : "Pr. Zoidberg"
+			name : "Dr. Zoidberg"
 		},
 		"tobias" : {
 			url : "http://screenletstore.appspot.com/img/c7efe59e-ccd9-11e2-be3b-11d00abb586c.png",
@@ -11,6 +11,10 @@
 		"dwight" : {
 			url : "http://screenletstore.appspot.com/img/ed2aadb5-ccd9-11e2-9c31-11d00abb586c.png",
 			name : "Dwight Schrute"
+		},
+		"scott" : {
+			url : "http://screenletstore.appspot.com/img/fbf1a64a-cd08-11e2-825e-4fe0b87fe5eb.png",
+			name : "Michael Scott"
 		}
 	}
 	var data = document.querySelector("[_template='roulotte.views.app.Main']").__data,
