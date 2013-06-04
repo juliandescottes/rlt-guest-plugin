@@ -38,28 +38,30 @@
 
 	var onChange = function () {
 		var message = room.messages[room.messages.length-1];
-		var text = message.content;
-		if (aria.utils.Type.isArray(text)) {
-			text = text[text.length-1];
-		}
-
-		var guestId = extractGuestId(text);
-		if (guestId !== null) {
-			text = text.replace(":"+guestId+":", "");
-			if (aria.utils.Type.isArray(message.content)) {
-				aria.utils.Json.removeAt(message.content, message.content.length-1);
-				aria.utils.Json.add(room.messages, {
-					user : {id  : guestId},
-					content : text,
-					room_id : message.room_id,
-					time : message.time,
-					type : "chat"
-				});
-			} else {
-				aria.utils.Json.setValue(message, "content", text);
-				aria.utils.Json.setValue(message.user, "id", guestId);
+		if (message.type == "chat") {
+			var text = message.content;
+			if (aria.utils.Type.isArray(text)) {
+				text = text[text.length-1];
 			}
-			document.querySelector("[_template='roulotte.views.room.Chat']").__template.$refresh();
+	
+			var guestId = extractGuestId(text);
+			if (guestId !== null) {
+				text = text.replace(":"+guestId+":", "");
+				if (aria.utils.Type.isArray(message.content)) {
+					aria.utils.Json.removeAt(message.content, message.content.length-1);
+					aria.utils.Json.add(room.messages, {
+						user : {id  : guestId},
+						content : text,
+						room_id : message.room_id,
+						time : message.time,
+						type : "chat"
+					});
+				} else {
+					aria.utils.Json.setValue(message, "content", text);
+					aria.utils.Json.setValue(message.user, "id", guestId);
+				}
+				document.querySelector("[_template='roulotte.views.room.Chat']").__template.$refresh();
+			}	
 		}
 	};
 
