@@ -13,7 +13,7 @@
 			name : "Dwight Schrute"
 		}
 	}
-	var data = $("[_template='roulotte.views.app.Main']").__data,
+	var data = window.$("[_template='roulotte.views.app.Main']").__data,
 		room = data.rooms[0],
 		lobby = data.lobby;
 
@@ -59,7 +59,7 @@
 				aria.utils.Json.setValue(message, "content", text);
 				aria.utils.Json.setValue(message.user, "id", guestId);
 			}
-			$("[_template='roulotte.views.room.Chat']").__template.$refresh();
+			window.$("[_template='roulotte.views.room.Chat']").__template.$refresh();
 		} else {
 			console.log("no guest id found");
 		}
